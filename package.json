@@ -8,7 +8,7 @@
     "train": "nodemon train.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Musab",
+  "author": "qosim",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.10",
