@@ -29,8 +29,17 @@ app.set("view engine", "ejs"); // biz ejs orqali frontend yasaymiz
 //4 Routing codes
 
 app.post("/create-item", (req, res) => {
-  console.log(req);
-  res.json({ test: "success" });
+  console.log("/user entered /create-item");
+  console.log(req.body);
+  const new_reja = req.body.reja;
+  db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.end("something wend wrong");
+    } else {
+      res.end("successfully added");
+    }
+  });
 });
 
 app.get("/author", (req, res) => {
@@ -38,7 +47,18 @@ app.get("/author", (req, res) => {
 });
 
 app.get("/", function (req, res) {
-  res.render("reja");
+  console.log("user entered /");
+  db.collection("plans")
+    .find()
+    .toArray((err, data) => {
+      if (err) {
+        console.log(err);
+        return res.end("something went wrong");
+      }
+
+      console.log(data);
+      return res.render("reja", { items: data });
+    });
 });
 
 module.exports = app;
