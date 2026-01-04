@@ -126,3 +126,19 @@ function countDigits(str) {
   return count;
 }
 console.log(countDigits("ad2a54y79wet0sfgb9"));
+
+//  MITASK - C;
+
+// function checkContent(str1, str2) {
+//   if (str1.length !== str2.length) return false;
+//   return str1.split("").sort().join("") === str2.split("").sort().join("");
+// }
+
+// console.log(checkContent("mitgroup", "gmtiprou"));
+// console.log(checkContent("michael", "leahci"));
+
+// 1) Uzunlikni tekshir
+// 2) Harflarni ajrat
+// 3) Tartibla
+// 4) Qayta string qil
+// 5) Solishtir

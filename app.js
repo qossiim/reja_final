@@ -1,63 +1,88 @@
-console.log("Web serverni boshlash");
+console.log("Web Serverni Boshlash");
 const express = require("express");
-const res = require("express/lib/response");
 const app = express();
 const fs = require("fs");
+
+// MongoDB call
+const db = require("./server").db();
+const mongodb = require("mongodb");
 
 let user;
 fs.readFile("database/user.json", "utf8", (err, data) => {
   if (err) {
-    console.log("Error:", err);
+    console.log("ERROR:", err);
   } else {
     user = JSON.parse(data);
   }
 });
 
-const db = require("./server").db();
-
-// 1 expressga kirib kelayotgan ma'lumotlarga bog'liq kodlar: KIRISH kodlari
+// 1 Kirish code
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 2: Session
+// 2 Session code
 
-// 3 Beckend server side rendering frontend yasash traditionsal yasash: VIEW
+// 3 Views code
 app.set("views", "views");
-app.set("view engine", "ejs"); // biz ejs orqali frontend yasaymiz
+app.set("view engine", "ejs");
 
-//4 Routing codes
-
+// 4 Routing code
+// app.get("/hello", function(req, res) {
+//     res.send("<h1>HELLO WORLD by Colin</h1>");
+// });
+// app.get("/gift", function(req, res) {
+//     res.send("<h1>Siz sovgalar bo'limidasiz</h1>");
+// });
 app.post("/create-item", (req, res) => {
-  console.log("/user entered /create-item");
+  console.log("user entered/create-item");
   console.log(req.body);
   const new_reja = req.body.reja;
   db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
-    if (err) {
-      console.log(err);
-      res.end("something wend wrong");
-    } else {
-      res.end("successfully added");
-    }
-  });
-});
+    console.log(data.ops);
 
+    res.json(data.ops[0]);
+
+    // if (err) {
+    //     console.log(err);
+    //     res.end("something went wrong");
+    // } else {
+    //     res.end("successfully added");
+    // }
+  });
+  // console.log(req);
+  // res.json({test: "success"});
+  // TODO: code with db here
+});
+app.post("/delete-item", (req, res) => {
+  const id = req.body.id;
+  db.collection("plans").deleteOne(
+    { _id: new mongodb.ObjectId(id) },
+    function (err, data) {
+      res.json({ state: "success" });
+    }
+  );
+  // console.log(id);
+  // res.end("done");
+});
+// TODO code db here
 app.get("/author", (req, res) => {
   res.render("author", { user: user });
 });
 
 app.get("/", function (req, res) {
-  console.log("user entered /");
+  console.log(`user entered /`);
   db.collection("plans")
     .find()
     .toArray((err, data) => {
       if (err) {
         console.log(err);
-        return res.end("something went wrong");
-      }
+        res.end("something went wrong");
+      } else {
+        // console.log(data);
 
-      console.log(data);
-      return res.render("reja", { items: data });
+        res.render("reja", { items: data });
+      }
     });
 });
 
