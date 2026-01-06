@@ -142,3 +142,55 @@ console.log(countDigits("ad2a54y79wet0sfgb9"));
 // 3) Tartibla
 // 4) Qayta string qil
 // 5) Solishtir
+
+// D-task
+
+// class Shop {
+//   constructor(non, lagmon, cola) {
+//     this.products = {
+//       non: non,
+//       lagmon: lagmon,
+//       cola: cola,
+//     };
+//   }
+
+//   getTime() {
+//     const now = new Date();
+//     const h = String(now.getHours()).padStart(2, "0");
+//     const m = String(now.getMinutes()).padStart(2, "0");
+//     return `${h}:${m}`;
+//   }
+
+//   qoldiq() {
+//     return `Hozir ${this.getTime()} da ${this.products.non} ta non, ${this.products.lagmon} ta lagmon va ${this.products.cola} ta cola mavjud!`;
+//   }
+
+//   sotish(nomi, soni) {
+//     if (!this.products.hasOwnProperty(nomi)) {
+//       console.log("Bunday mahsulot yo‘q ");
+//       return;
+//     }
+
+//     if (this.products[nomi] < soni) {
+//       console.log("Yetarli mahsulot yo‘q ");
+//       return;
+//     }
+
+//     this.products[nomi] -= soni;
+//     console.log(
+//       `Hozir ${this.getTime()} da ${soni} ta ${nomi} sotildi`
+//     );
+//   }
+
+//   qabul(nomi, soni) {
+//     if (!this.products.hasOwnProperty(nomi)) {
+//       console.log("Bunday mahsulot yo‘q ");
+//       return;
+//     }
+
+//     this.products[nomi] += soni;
+//     console.log(
+//       `Hozir ${this.getTime()} da ${soni} ta ${nomi} qabul qilindi`
+//     );
+//   }
+// }
