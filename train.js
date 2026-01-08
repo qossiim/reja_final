@@ -194,3 +194,11 @@ console.log(countDigits("ad2a54y79wet0sfgb9"));
 //     );
 //   }
 // }
+
+// MITASK - E;
+
+// function getReverse(str) {
+//   return str.split("").reverse().join("");
+// }
+
+// console.log(getReverse("hello"));
