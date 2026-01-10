@@ -215,4 +215,4 @@ function findDoublers(str) {
 }
 
 console.log(findDoublers("milliy"));
-console.log(findDoublers("michael"));
+console.log(findDoublers("Qosim"));
