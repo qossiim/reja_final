@@ -113,7 +113,7 @@ function countLetter(letter, word) {
   return count;
 }
 
-// A-TAST-2
+// b-TAST-
 function countDigits(str) {
   let count = 0;
 
@@ -202,3 +202,17 @@ console.log(countDigits("ad2a54y79wet0sfgb9"));
 // }
 
 // console.log(getReverse("hello"));
+
+// // MITASK - F;
+
+function findDoublers(str) {
+  const seen = new Set();
+  for (const ch of str) {
+    if (seen.has(ch)) return true;
+    seen.add(ch);
+  }
+  return false;
+}
+
+console.log(findDoublers("milliy"));
+console.log(findDoublers("michael"));
