@@ -49,31 +49,31 @@
 
 // 22: Asynchronous functionlarni organamiz //
 
-console.log("Jack Ma maslahatlari");
-const list = [
-  "yaxshi talaba bo'ling", //0-20
-  "togri boshliq tanlang va koproq xato qiling", //20-30
-  "ozingizga ishlashni boshlang", //30-40
-  "siz kuchli bolgan narsalarni qiling", //40-50
-  "yoshlarga investitsiya qiling", //50-60
-  "endi dam oling, foydasi yoq", //60
-];
+// console.log("Jack Ma maslahatlari");
+// const list = [
+//   "yaxshi talaba bo'ling", //0-20
+//   "togri boshliq tanlang va koproq xato qiling", //20-30
+//   "ozingizga ishlashni boshlang", //30-40
+//   "siz kuchli bolgan narsalarni qiling", //40-50
+//   "yoshlarga investitsiya qiling", //50-60
+//   "endi dam oling, foydasi yoq", //60
+// ];
 
-async function masahatBering(a) {
-  if (typeof a !== "number") throw new Error("insert a number", null);
-  else if (a <= 20) return list[0];
-  else if (a > 20 && a <= 30) return list[1];
-  else if (a > 30 && a <= 40) return list[2];
-  else if (a > 40 && a <= 50) return list[3];
-  else if (a > 50 && a <= 60) return list[4];
-  else {
-    return new Promise((resolve, reject) => {
-      setTimeout(function () {
-        resolve(list[5]);
-      }, 5000);
-    });
-  }
-}
+// async function masahatBering(a) {
+//   if (typeof a !== "number") throw new Error("insert a number", null);
+//   else if (a <= 20) return list[0];
+//   else if (a > 20 && a <= 30) return list[1];
+//   else if (a > 30 && a <= 40) return list[2];
+//   else if (a > 40 && a <= 50) return list[3];
+//   else if (a > 50 && a <= 60) return list[4];
+//   else {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(function () {
+//         resolve(list[5]);
+//       }, 5000);
+//     });
+//   }
+// }
 
 //the/catch usuli bilan chaqirish
 // console.log("passed here 0");
@@ -87,45 +87,49 @@ async function masahatBering(a) {
 // console.log("passed here 1");
 
 // async/await usuli bilan chaqirish
-async function run() {
-  let javob = await masahatBering(25);
-  console.log(javob);
-  javob = await masahatBering(70);
-  console.log(javob);
-  javob = await masahatBering(41);
-  console.log(javob);
-}
+// async function run() {
+//   let javob = await masahatBering(25);
+//   console.log(javob);
+//   javob = await masahatBering(70);
+//   console.log(javob);
+//   javob = await masahatBering(41);
+//   console.log(javob);
+// }
 run();
 
+// Shunday 2 parametrli function tuzing, hamda birinchi parametrdagi
+// letterni ikkinchi parametrdagi sozdan qatnashga sonini return qilishi kerak boladi.
+// MASALAN countLetter("e", "engineer") 3ni return qiladi.
+
 // A-TASK
-function countLetter(letter, word) {
-  let count = 0;
+// function countLetter(letter, word) {
+//   let count = 0;
 
-  letter = letter.toLowerCase();
-  word = word.toLowerCase();
+//   letter = letter.toLowerCase();
+//   word = word.toLowerCase();
 
-  for (let i = 0; i < word.length; i++) {
-    if (word[i] === letter) {
-      count++;
-    }
-  }
+//   for (let i = 0; i < word.length; i++) {
+//     if (word[i] === letter) {
+//       count++;
+//     }
+//   }
 
-  return count;
-}
+//   return count;
+// }
 
-// b-TAST-
-function countDigits(str) {
-  let count = 0;
+// // b-TAST-
+// function countDigits(str) {
+//   let count = 0;
 
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] >= "0" && str[i] <= "9") {
-      count++;
-    }
-  }
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i] >= "0" && str[i] <= "9") {
+//       count++;
+//     }
+//   }
 
-  return count;
-}
-console.log(countDigits("ad2a54y79wet0sfgb9"));
+//   return count;
+// }
+// console.log(countDigits("ad2a54y79wet0sfgb9"));
 
 //  MITASK - C;
 
@@ -201,18 +205,27 @@ console.log(countDigits("ad2a54y79wet0sfgb9"));
 //   return str.split("").reverse().join("");
 // }
 
-// console.log(getReverse("hello"));
-
-// // MITASK - F;
+// // MITASK - F; last
 
 function findDoublers(str) {
-  const seen = new Set();
-  for (const ch of str) {
-    if (seen.has(ch)) return true;
-    seen.add(ch);
+  let seen = {};
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+
+    if (seen[char]) {
+      return true;
+    }
+
+    seen[char] = true;
   }
+
   return false;
 }
 
+<<<<<<< HEAD
 console.log(findDoublers("milliy"));
 console.log(findDoublers("Qosim"));
+=======
+console.log(findDoublers("hello"));
+>>>>>>> ae87a0c (feat: 33-34 Wireframe,figma va Er Modelling & F-TASK-Last)
