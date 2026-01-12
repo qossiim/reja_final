@@ -207,25 +207,49 @@ run();
 
 // // MITASK - F; last
 
-function findDoublers(str) {
-  let seen = {};
+// function findDoublers(str) {
+//   let seen = {};
 
-  for (let i = 0; i < str.length; i++) {
-    let char = str[i];
+//   for (let i = 0; i < str.length; i++) {
+//     let char = str[i];
 
-    if (seen[char]) {
-      return true;
+//     if (seen[char]) {
+//       return true;
+//     }
+
+//     seen[char] = true;
+//   }
+
+//   return false;
+// }
+
+// console.log(findDoublers("hello"));
+
+// last-task
+// function findDoublers(f) {
+//   for (let i = 0; i < f.length; i++) {
+//     if (f.indexOf(f[i]) !== f.lastIndexOf(f[i])) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+
+// console.log(findDoublers("hello")); tig log
+
+// G-task
+function getHighestIndex(arr) {
+  let max = arr[0];
+  let maxIndex = 0;
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+      maxIndex = i;
     }
-
-    seen[char] = true;
   }
 
-  return false;
+  return maxIndex;
 }
 
-<<<<<<< HEAD
-console.log(findDoublers("milliy"));
-console.log(findDoublers("Qosim"));
-=======
-console.log(findDoublers("hello"));
->>>>>>> ae87a0c (feat: 33-34 Wireframe,figma va Er Modelling & F-TASK-Last)
+console.log(getHighestIndex([5, 21, 12, 21, 8]));
